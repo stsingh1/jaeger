@@ -75,6 +75,7 @@ func (eta *bestETA) Get(ctx context.Context, customerID string) (*Response, erro
 		return nil, err
 	}
 	eta.logger.For(ctx).Info("Found customer", zap.Any("customer", customer))
+	eta.logger.For(ctx).Info("Testing purposes, here", zap.Any("customer", customer))
 
 	if span := opentracing.SpanFromContext(ctx); span != nil {
 		span.SetBaggageItem("customer", customer.Name)
